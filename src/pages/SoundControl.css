@@ -1,0 +1,122 @@
+.sound-control {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  height: fit-content;
+}
+
+.sound-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: 'Gilroy', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.sound-slider {
+  width: 120px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Slider thumb styling */
+.sound-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;  
+  
+  margin-top: -4px; /* 🔥 centers thumb vertically */
+}
+
+.sound-slider::-webkit-slider-thumb:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.sound-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.sound-slider::-moz-range-thumb:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Track styling */
+.sound-slider::-webkit-slider-runnable-track {
+  background: rgba(255, 255, 255, 0.15);
+  height: 4px;
+  border-radius: 2px;
+}
+
+.sound-slider::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+
+.sound-slider::-moz-range-progress {
+  background: rgba(255, 255, 255, 0.3);
+  height: 4px;
+  border-radius: 2px;
+}
+
+.sound-value {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 11px;
+  min-width: 35px;
+  text-align: right;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .sound-control {
+    top: 15px;
+    right: 15px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .sound-slider {
+    width: 80px;
+  }
+
+  .sound-label {
+    font-size: 11px;
+  }
+
+  .sound-value {
+    font-size: 10px;
+    min-width: 30px;
+  }
+}

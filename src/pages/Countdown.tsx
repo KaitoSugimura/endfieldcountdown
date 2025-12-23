@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './Countdown.css';
 import PerspectiveGrid from './PerspectiveGrid';
 import HolographicTimer from './HolographicTimer';
+import SoundControl from './SoundControl';
 
 // Release date for Arknights Endfield
 const RELEASE_DATE = '2026-01-22T00:00:00Z';
@@ -76,6 +77,7 @@ export default function Countdown() {
   return (
     <div className="countdown-container">
       <PerspectiveGrid />
+      <SoundControl audio={audio} />
       <div className="countdown-content">
         <div>
 
