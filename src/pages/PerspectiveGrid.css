@@ -1,0 +1,78 @@
+.perspective-grid-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+.perspective-grid {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 0;
+  
+  /* 3D Perspective Transform */
+  transform: rotateX(65deg) rotateZ(-15deg) translateZ(0);
+  transform-style: preserve-3d;
+  
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Adjust grid for mobile screens */
+@media (max-width: 768px) {
+  .perspective-grid {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    width: 250%;
+    height: 250%;
+    top: -75%;
+    left: -75%;
+    animation: none;
+    transition: transform 0.1s ease-out;
+  }
+}
+
+.grid-cell {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.02) 0%, 
+    rgba(255, 255, 255, 0.01) 50%, 
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  
+  /* Subtle glow on alternating cells for depth */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.grid-cell:nth-child(odd) {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.03) 0%, 
+    rgba(255, 255, 255, 0.015) 50%, 
+    rgba(255, 255, 255, 0.03) 100%
+  );
+}
+
+/* Animate slight depth shift */
+@keyframes gridFlow {
+  0%, 100% {
+    transform: rotateX(65deg) rotateZ(-15deg) translateZ(0);
+  }
+  50% {
+    transform: rotateX(65deg) rotateZ(-15deg) translateZ(10px);
+  }
+}
+
+.perspective-grid {
+  animation: none;
+  transition: transform 0.1s ease-out;
+}

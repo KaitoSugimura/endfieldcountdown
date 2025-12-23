@@ -1,0 +1,140 @@
+.holographic-timer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 20px 0;
+}
+
+.timer-panel {
+  position: relative;
+  border-radius: 8px;
+  width: 95%;
+  max-width: 1000px;
+  height: auto;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.88;
+  overflow: visible;
+  padding: clamp(10px, 3vw, 20px);
+  box-sizing: border-box;
+}
+
+.timer-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(5px, 1vw, 10px);
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.timer-value {
+  font-size: clamp(36px, 10vw, 140px);
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  color: #FFFF00;
+  letter-spacing: clamp(3px, 0.8vw, 8px);
+  line-height: 1;
+
+  opacity: 0.8;
+
+  text-shadow: 
+    0 0 8px rgba(255, 227, 72, 0.6),
+    0 0 16px rgba(255, 215, 0, 0.4),
+
+    -8px 18px 0 rgba(0, 0, 0, 0.2);
+  filter: 
+    drop-shadow(0 0 10px rgba(255, 227, 72, 0.5))
+    drop-shadow(0 0 20px rgba(255, 215, 0, 0.2));
+
+  position: relative;
+  background: linear-gradient(90deg,
+    rgba(255, 255, 0, 0.1) 0%,
+    transparent 25%,
+    transparent 75%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.timer-separator {
+  font-size: clamp(30px, 8vw, 120px);
+  font-weight: 900;
+  color: #FFE348;
+  letter-spacing: clamp(0.5px, 0.2vw, 2px);
+  line-height: 1;
+
+  text-shadow: 
+    0 0 8px rgba(255, 227, 72, 0.6),
+    0 0 16px rgba(255, 215, 0, 0.4),
+    -8px 18px 0 rgba(0, 0, 0, 0.15);
+  filter: 
+    drop-shadow(0 0 10px rgba(255, 227, 72, 0.3))
+    drop-shadow(0 0 20px rgba(255, 215, 0, 0.1));
+
+  margin: 0 clamp(1px, 0.3vw, 5px);
+  position: relative;
+  background: linear-gradient(90deg,
+    rgba(255, 227, 72, 0.1) 0%,
+    transparent 25%,
+    transparent 75%,
+    rgba(0, 0, 0, 0.06) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.timer-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 0, 0.18) 0px,
+    rgba(255, 255, 0, 0.04) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  animation: scanlineMove 10s linear infinite;
+}
+
+@keyframes scanlineMove {
+  0% {
+    background-position: 0 0;
+    
+  }
+  100% {
+    background-position: 0 40px;
+  }
+}
+
+
+/* Responsive Design - Using CSS clamp for fluid scaling */
+@media (max-width: 768px) {
+  .holographic-timer {
+    margin: 40px 0;
+  }
+}
